@@ -1,283 +1,652 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="assets/img/favicon.ico" type="image/x-icon">
-    <title>Gabriel Troncoso - Diseñador UX/UI</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Gabriel Troncoso | Diseñador UX/UI & Product Designer</title>
+    <!-- Google Fonts: DM Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Roboto:wght@100;300;400;700&display=swap" rel="stylesheet" >
-    <script src="https://kit.fontawesome.com/d5c24c2a1e.js" crossorigin="anonymous"></script></head>
-<body>
-    <header class="header" id="header">
-        <div class="mobile">
-            <div id="icon-menu-mobile">
-                <i class="fa-solid fa-bars"></i>
-            </div>
-            <div class="menu-mobile ">
-                <div class="box-btn-close-menu" id="box-btn-close-menu">
-                    <i class="fa-solid fa-xmark" i></i>
-                </div>
-               <nav class="nav-mobile">
-                <ul>
-                    <li id="btnHomeMenuMobile"><a href="#header"><i class="fa-solid fa-house"></i>Home</a></li>
-                    <li id="btnAboutMeMenuMobile"><a href="#about-me"><i class="fa-solid fa-user"></i> Sobre Mí</a></li>
-                    <li id="btnPortfolioMenuMobile"><a href="#portfolio"><i class="fa-sharp fa-solid fa-folder-open"></i> Portafolio</a></li>
-                    <li id="btnContactMenuMobile"><a href="#contact"> <i class="fa-sharp fa-solid fa-address-card"></i> Contacto</a></li>  
-                </ul>
-               </nav>
-            </div>
-        </div>
-       <div class="cont-profile-header">
-            <div class="profile-photo">
-                <img src="./assets/img/perfil.jpg" alt="profile photo">
-            </div>
-            <div class="profile-text-header">
-                <h1>Gabriel Troncoso Castro</h1>                
-                <p>Diseñador UX/UI</p>
-            </div>
-       </div>   
-       <nav class="navbar-header">
-            <ul>
-                <li><a href="#about-me"><i class="fa-solid fa-user"></i> Sobre Mí</a></li>
-                <li><a href="#portfolio"><i class="fa-sharp fa-solid fa-folder-open"></i> Portafolio</a></li>
-                <li><a href="#contact"> <i class="fa-sharp fa-solid fa-address-card"></i> Contacto</a></li>                
-            </ul>
-       </nav>  
-       <div class="light-dark">  
-            <p>Modo Oscuro/Claro</p>          
-            <label class="switch">
-            <input type="checkbox" id="checkbox-dark-light" >
-                <span class="slider"></span>
-            </label> 
-       </div>
-    </header>
-    <main id="main">
-        <aside class="aside">
-            <div class="aside-container">
-                <div class="profile-photo">
-                    <img src="./assets/img/perfil.jpg" alt="profile photo">
-                </div> 
-                <h3>Gabriel Troncoso Castro</h3>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"DM Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#0095ff',
+                        secondary: '#d6720f',
+                        notion: {
+                            bg: '#ffffff',
+                            secondary: '#f7f6f3',
+                            border: '#e5e7eb',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: #37352f; /* Notion text color */
+            position: relative;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dark body {
+            color: #ebeced;
+        }
+        /* Grainy texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+        .dark body::before {
+            opacity: 0.05;
+            filter: invert(1);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -9px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background-color: #e5e7eb;
+        }
+        .dark .timeline-item::before {
+            background-color: #37352f;
+        }
+        .timeline-dot {
+            position: absolute;
+            left: -14px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #0095ff;
+            border: 2px solid white;
+        }
+        .dark .timeline-dot {
+            border-color: #1a1a1a;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-[#0b0b0b] dark:text-gray-100 transition-colors duration-300">
+
+    <!-- 1. NAVEGACIÓN -->
+    <header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-[#0b0b0b]/80 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+        <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold tracking-tight hover:text-primary transition-colors dark:text-white">
+                Gabriel Troncoso
+            </a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600 dark:text-gray-400">
+                <a href="#habilidades" class="hover:text-primary transition-colors">Habilidades</a>
+                <a href="#casos" class="hover:text-primary transition-colors">Casos de Estudio</a>
+                <a href="#proyectos" class="hover:text-primary transition-colors">Proyectos</a>
+                <a href="#experiencia" class="hover:text-primary transition-colors">Experiencia</a>
+                <a href="#sobre-mi" class="hover:text-primary transition-colors">Sobre mí</a>
+                <a href="#contacto" class="hover:text-primary transition-colors">Contacto</a>
                 
-                <p class="txt-study">Diseñador UX/UI</p>
-                <nav class="navbar-aside">
-                    <ul>
-                        <li><a href="#header"><i class="fa-solid fa-house"></i>Home</a> </li>
-                        <li><a href="#about-me"><i class="fa-solid fa-user"></i></i>Sobre Mi</a> </li>
-                        <li><a href="#portfolio"><i class="fa-solid fa-folder-open"></i>Portafolio</a> </li>
-                        <li><a href="#contact"><i class="fa-sharp fa-solid fa-address-card"></i>Contacto</a> </li>
-                    </ul>
-                </nav>
+                <!-- Dark Mode Toggle Desktop -->
+                <button id="dark-mode-toggle" class="p-2 rounded-xl hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors" aria-label="Toggle Dark Mode">
+                    <span id="dark-mode-icon" class="material-symbols-outlined">dark_mode</span>
+                </button>
             </div>
 
-        </aside>
-        <div class="main-container">
-            <section id="about-me" >                
-                <h2>Sobre Mi</h2>
-                <p><i class="fa-solid fa-location-dot"></i></i>Chile</p>
-                <p>Soy un Informático con un gusto e interés especial por el diseño y la resolución de problemas con enfoque al usuario. Me apasiona aprender constantemente nuevos elementos que aporten capital a mi carrera, sea a nivel profesional o personal. Soy considerado por mis pares como una persona empática, asertiva, flexible, con habilidades blandas para el trabajo en equipo y así cumplir metas con no sólo con eficiencia yeficacia, sino también con propósito.</p>                 
-                <p>A modo de hobby, he participado en el desarrollo de videojuegos, así como en proyectos musicales.</p>
-                <h4>Habilidades y Conocimientos</h4> 
-                <div class="grid-skills">
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg viewBox="0 0 45 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.48834 0H8.14826V2.62796H10.582V0H13.2419V7.95517H10.582V5.29279H8.14826V7.95517H5.4908V0H5.48834ZM16.7377 2.63779H14.3973V0H21.7404V2.63779H19.3976V7.95517H16.7377V2.63779ZM22.9056 0H25.6786L27.3847 2.79512L29.0883 0H31.8613V7.95517H29.2137V4.012L27.3847 6.84154H27.338L25.5065 4.01446V7.95517H22.9056V0ZM33.1839 0H35.8463V5.32721H39.583V7.95762H33.1839V0Z" fill="#404040"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.40475 54.2603L0.375 11.596H44.625L39.5928 54.2554L22.4754 59L5.40475 54.2603ZM15.5749 30.9062L15.098 25.547H35.1211L35.5882 20.3157H9.38233L10.7934 36.14H28.9285L28.3213 42.925L22.4853 44.5032H22.4803L16.6541 42.9299L16.2804 38.7581H11.0245L11.7571 46.9738L22.4754 49.9484L33.211 46.9738L34.5188 32.3123L34.6466 30.9086H15.5749V30.9062Z" fill="#404040"/>
-                            </svg>                                
-                        </div>
-                        <p>HTML</p>
+            <!-- Mobile Menu Toggle -->
+            <div class="flex items-center md:hidden">
+                <button id="dark-mode-toggle-mobile" class="p-2 mr-2 rounded-xl hover:bg-gray-100 dark:hover:bg-zinc-800 transition-colors" aria-label="Toggle Dark Mode">
+                    <span id="dark-mode-icon-mobile" class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button class="p-2" id="menu-btn">
+                    <span class="material-symbols-outlined dark:text-white">menu</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-[60] bg-white dark:bg-[#0b0b0b] flex flex-col items-center justify-center space-y-8 text-2xl font-bold transition-colors duration-300">
+        <button id="close-menu" class="absolute top-6 right-6 p-2">
+            <span class="material-symbols-outlined text-4xl dark:text-white">close</span>
+        </button>
+        <a href="#habilidades" class="hover:text-primary transition-colors dark:text-white">Habilidades</a>
+        <a href="#casos" class="hover:text-primary transition-colors dark:text-white">Casos de Estudio</a>
+        <a href="#proyectos" class="hover:text-primary transition-colors dark:text-white">Proyectos</a>
+        <a href="#experiencia" class="hover:text-primary transition-colors dark:text-white">Experiencia</a>
+        <a href="#sobre-mi" class="hover:text-primary transition-colors dark:text-white">Sobre mí</a>
+        <a href="#contacto" class="hover:text-primary transition-colors dark:text-white">Contacto</a>
+    </div>
+
+    <main>
+        
+        <!-- 2. HERO SECTION (Blanco) -->
+        <section id="hero" class="bg-white dark:bg-[#0b0b0b] min-h-[75vh] flex items-center transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-12 md:py-16 grid md:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+                <div class="space-y-6">
+                    <div class="inline-block px-3 py-1 bg-orange-50 dark:bg-orange-900/20 text-secondary text-xs font-semibold rounded-full border border-orange-100 dark:border-orange-900/30 transition-colors">
+                        ¡Hola! 👋 Bienvenido a mi espacio
                     </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg viewBox="0 0 45 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.48834 0H8.14826V2.62796H10.582V0H13.2419V7.95517H10.582V5.29279H8.14826V7.95517H5.4908V0H5.48834ZM16.7377 2.63779H14.3973V0H21.7404V2.63779H19.3976V7.95517H16.7377V2.63779ZM22.9056 0H25.6786L27.3847 2.79512L29.0883 0H31.8613V7.95517H29.2137V4.012L27.3847 6.84154H27.338L25.5065 4.01446V7.95517H22.9056V0ZM33.1839 0H35.8463V5.32721H39.583V7.95762H33.1839V0Z" fill="#404040"/>
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.40475 54.2603L0.375 11.596H44.625L39.5928 54.2554L22.4754 59L5.40475 54.2603ZM15.5749 30.9062L15.098 25.547H35.1211L35.5882 20.3157H9.38233L10.7934 36.14H28.9285L28.3213 42.925L22.4853 44.5032H22.4803L16.6541 42.9299L16.2804 38.7581H11.0245L11.7571 46.9738L22.4754 49.9484L33.211 46.9738L34.5188 32.3123L34.6466 30.9086H15.5749V30.9062Z" fill="#404040"/>
-                            </svg>                                
-                        </div>
-                        <p>CSS</p>
+                    <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[0.95] tracking-tighter dark:text-white">
+                        Diseñador <br>
+                        <span class="text-primary">UX/UI</span>
+                    </h1>
+                    <p class="text-base md:text-lg text-gray-500 dark:text-zinc-500 max-w-md leading-relaxed">
+                        Especializado en crear interfaces intuitivas y sistemas de diseño escalables que conectan marcas con personas.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-4">
+                        <a href="https://www.linkedin.com" target="_blank" class="px-8 py-4 bg-primary text-white font-bold rounded-2xl shadow-lg shadow-blue-200 dark:shadow-none hover:bg-blue-500 hover:-translate-y-1 transition-all flex items-center gap-2">
+                            Hablemos <span class="material-symbols-outlined text-sm">open_in_new</span>
+                        </a>
+                        <a href="#casos" class="px-8 py-4 border border-gray-200 dark:border-zinc-800 text-gray-700 dark:text-zinc-300 font-bold rounded-2xl hover:bg-gray-50 dark:hover:bg-zinc-800 hover:border-gray-300 dark:hover:border-zinc-700 transition-all">
+                            Ver Proyectos
+                        </a>
                     </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H59V59H0V0ZM45.103 49.4617C42.3669 49.4617 40.8206 48.0358 39.6332 46.0938L35.1271 48.7119C36.7545 51.9274 40.0807 54.3808 45.2309 54.3808C50.4966 54.3808 54.4177 51.6471 54.4177 46.6543C54.4177 42.0252 51.7577 39.9676 47.0476 37.9444L45.6611 37.3519C43.2814 36.3194 42.2514 35.6483 42.2514 33.984C42.2514 32.6393 43.2839 31.6092 44.9064 31.6092C46.4969 31.6092 47.522 32.2804 48.4734 33.984L52.7902 31.2135C50.9637 28.0004 48.4316 26.7737 44.9064 26.7737C39.9553 26.7737 36.7865 29.94 36.7865 34.0995C36.7865 38.6106 39.4415 40.7469 43.4437 42.4505L44.8302 43.0454C47.3598 44.1517 48.8667 44.8252 48.8667 46.7255C48.8667 48.3136 47.3991 49.4617 45.103 49.4617ZM23.6172 49.4248C21.712 49.4248 20.918 48.1219 20.0477 46.5731L15.5342 49.3068C16.842 52.0749 19.4135 54.371 23.8507 54.371C28.765 54.371 32.1304 51.7577 32.1304 46.0175V27.0884H26.5869V45.9438C26.5869 48.7143 25.4364 49.4248 23.6147 49.4248H23.6172Z" fill="#404040"/>
-                            </svg>                                                                
-                        </div>
-                        <p>Javascript</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="44" height="45" viewBox="0 0 44 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M22 0.5C34.1 0.5 44 10.4 44 22.5C44 34.6 34.1 44.5 22 44.5C9.9 44.5 0 34.6 0 22.5C0 10.4 9.9 0.5 22 0.5ZM17.6 29.7875C17.875 31.025 17.875 32.125 17.6 33.0875L17.4625 33.5C17.4625 33.6375 17.325 33.775 17.325 33.775C17.05 34.325 16.775 34.7375 16.3625 35.2875C15.125 36.6625 13.3375 37.2125 12.5125 36.8C11.6875 36.3875 12.1 34.325 13.6125 32.8125C15.2625 31.1625 17.4625 30.0625 17.4625 30.0625L17.6 29.7875ZM35.75 9.85C34.7875 6 28.325 4.625 22.1375 6.825C18.5625 8.2 14.575 10.2625 11.6875 12.875C8.25 16.0375 7.8375 18.7875 7.975 19.8875C8.8 23.875 14.3 26.625 16.6375 28.55C15.95 28.825 11 31.3 9.9 33.9125C8.6625 36.6625 10.0375 38.5875 11 38.725C13.8875 39.55 16.9125 38.0375 18.425 35.7C19.9375 33.3625 19.8 30.475 19.1125 28.9625C20.1821 28.6322 21.3191 28.5848 22.4125 28.825C26.2625 29.2375 27.0875 31.7125 26.8125 32.675C26.5375 33.6375 25.85 34.1875 25.575 34.4625C25.3 34.6 25.1625 34.7375 25.3 34.7375C25.3 34.875 25.4375 34.875 25.7125 34.875C25.9875 34.875 27.775 34.05 27.775 32.125C27.9125 29.7875 25.575 27.175 21.5875 27.175C19.9375 27.175 18.8375 27.3125 18.15 27.5875C18.15 27.45 18.0125 27.45 18.0125 27.45C15.5375 24.8375 11 22.9125 11.1375 19.3375C11.1375 18.1 11.6875 14.6625 19.9375 10.5375C26.675 7.1 32.175 8.0625 33.1375 10.125C34.5125 13.0125 30.25 18.5125 23.2375 19.3375C20.4875 19.6125 19.1125 18.65 18.8375 18.2375C18.425 17.825 18.425 17.825 18.2875 17.825C18.0125 17.9625 18.15 18.2375 18.2875 18.5125C18.5625 19.0625 19.3875 20.025 20.9 20.575C22.1375 20.9875 25.3 21.2625 29.15 19.75C33.4125 18.1 36.7125 13.5625 35.75 9.7125V9.85Z" fill="#404040"/>
-                            </svg>                                                               
-                        </div>
-                        <p>SASS</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="60" height="48" viewBox="0 0 60 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.4625 0C9.0375 0 6.505 2.9975 6.62 6.245C6.7275 9.37 6.5875 13.4125 5.57 16.71C4.545 20.015 2.82 22.11 0 22.38V25.4175C2.82 25.685 4.5475 27.78 5.5675 31.0875C6.5875 34.385 6.7275 38.4275 6.6175 41.55C6.505 44.8 9.0375 47.7975 12.4625 47.7975H47.5425C50.9675 47.7975 53.5 44.8 53.385 41.55C53.2775 38.4275 53.4175 34.385 54.435 31.0875C55.4575 27.78 57.18 25.6875 60 25.4175V22.38C57.18 22.11 55.4575 20.015 54.435 16.71C53.4175 13.41 53.2775 9.3675 53.385 6.245C53.5 2.995 50.965 0 47.5425 0H12.4625ZM40.675 29.4225C40.675 33.8975 37.3375 36.61 31.8 36.61H22.3725C22.1026 36.61 21.8438 36.5028 21.653 36.312C21.4622 36.1212 21.355 35.8624 21.355 35.5925V12.2025C21.3557 11.9331 21.4632 11.6749 21.6539 11.4846C21.8446 11.2944 22.1031 11.1875 22.3725 11.1875H31.7475C36.365 11.1875 39.3975 13.6875 39.3975 17.53C39.3975 20.225 37.3575 22.6375 34.76 23.0625V23.2025C38.2975 23.59 40.6775 26.04 40.6775 29.4225H40.675ZM30.775 14.41H25.4V22.005H29.9275C33.4275 22.005 35.3575 20.595 35.3575 18.075C35.3575 15.715 33.6975 14.41 30.775 14.41ZM25.4 25.0175V33.385H30.975C34.6175 33.385 36.55 31.9225 36.55 29.175C36.55 26.425 34.565 25.0175 30.74 25.0175H25.4Z" fill="#404040"/>
-                            </svg>                                                                                              
-                        </div>
-                        <p>Boostrap</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M37.6912 21.3088C39.8207 21.2449 41.8417 20.354 43.3254 18.8251C44.8092 17.2962 45.639 15.2494 45.639 13.1189C45.639 10.9884 44.8092 8.94163 43.3254 7.41269C41.8417 5.88375 39.8207 4.99287 37.6912 4.92896H21.3088C19.1793 4.99287 17.1584 5.88375 15.6746 7.41269C14.1909 8.94163 13.361 10.9884 13.361 13.1189C13.361 15.2494 14.1909 17.2962 15.6746 18.8251C17.1584 20.354 19.1793 21.2449 21.3088 21.3088C19.1607 21.346 17.113 22.2255 15.607 23.7579C14.101 25.2902 13.2571 27.3527 13.2571 29.5012C13.2571 31.6497 14.101 33.7123 15.607 35.2446C17.113 36.7769 19.1607 37.6564 21.3088 37.6936C19.1712 37.746 17.1386 38.632 15.6452 40.1624C14.1519 41.6929 13.3159 43.7465 13.3159 45.8848C13.3159 48.0231 14.1519 50.0767 15.6452 51.6072C17.1386 53.1376 19.1712 54.0236 21.3088 54.076C23.4813 54.0747 25.5644 53.2109 27.1003 51.6745C28.6362 50.1381 29.4994 48.0548 29.5 45.8823V21.3088H37.6912Z" fill="#404040"/>
-                                <path d="M37.6912 37.6912C42.215 37.6912 45.8823 34.0239 45.8823 29.5C45.8823 24.9761 42.215 21.3088 37.6912 21.3088C33.1673 21.3088 29.5 24.9761 29.5 29.5C29.5 34.0239 33.1673 37.6912 37.6912 37.6912Z" fill="#404040"/>
-                            </svg>                                                                                              
-                        </div>
-                        <p>Figma</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M29.5 0C13.2086 0 0 13.2086 0 29.5C0 45.7914 13.2086 59 29.5 59C45.7914 59 59 45.7914 59 29.5C59 13.2086 45.7914 0 29.5 0ZM29.5 4.53808C43.2544 4.55529 54.398 15.7112 54.398 29.468C54.398 43.2372 43.2372 54.398 29.468 54.398C15.6989 54.398 4.53808 43.2372 4.53808 29.468C4.53808 22.5847 7.32829 16.3528 11.8393 11.8418C14.1543 9.52333 16.9044 7.68487 19.9317 6.43193C22.959 5.17899 26.204 4.53623 29.4803 4.54054H29.4975L29.5 4.53808ZM29.5 11.3477C18.703 13.2504 9.07617 23.2067 9.07617 34.0381C14.3591 24.7112 17.8868 24.04 18.8628 24.04C19.8387 24.04 20.3525 24.5465 20.3525 25.6699V39.5693C20.3525 41.2975 16.9945 41.0148 15.8833 40.8452C19.9887 46.9542 29.5 47.6548 29.5 47.6548L34.0381 43.1167L38.5762 45.3857C45.7397 42.1063 49.9214 35.0853 49.9214 34.0405C48.1937 36.1918 45.8519 37.7661 43.2077 38.554L43.1118 38.5786C42.5095 38.5786 40.8428 38.2689 40.8428 37.4429V20.9893C40.8428 19.561 44.1418 15.2023 45.3808 13.6143C37.1897 15.7604 34.8149 19.4995 34.8149 19.4995C34.8149 19.4995 34.193 18.1523 31.7666 18.1523C32.9982 19.3151 33.8267 20.8909 34.0332 22.656L34.0356 22.6904V36.5898C32.696 37.5365 31.1806 38.206 29.5787 38.559L29.4951 38.5737C27.9217 38.5737 27.1547 37.9345 27.1547 36.73C27.1547 35.5254 27.226 20.4214 27.226 20.4214C27.226 20.4214 24.957 21.2547 24.957 16.5913C24.957 14.2583 29.4951 11.3427 29.4951 11.3427L29.5 11.3477Z" fill="#404040"/>
-                            </svg>                                                                                                                             
-                        </div>
-                        <p>Unreal Engine 4</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M62 62H0V0H62V62ZM49.2137 26.279V21.4704C48.4218 21.1178 43.8867 19.8205 40.3039 21.1877C35.1429 23.1569 35.3283 29.0893 37.2867 31.4175C39.8242 34.4342 46.1365 35.5589 45.1035 38.5199C44.5687 40.0532 42.0716 40.3201 39.8701 39.8053C37.82 39.326 36.0375 38.1117 36.0375 38.1117V43.2031C36.0375 43.2031 37.7994 44.1854 39.9619 44.4191C42.7341 44.7186 46.209 44.1531 47.9499 42.6057C51.0486 39.8512 51.5245 33.7493 45.6521 30.9158C40.7654 28.5581 40.8458 27.8852 40.88 26.6759C40.9261 25.0561 44.3269 24.059 49.2137 26.279V26.279ZM22.8613 12.7845C26.9273 12.9259 32.9026 14.7998 32.9026 22.7904C32.9026 30.7811 25.5917 33.4031 18.9208 32.8318V44.1459H13.9512V12.8904C13.9512 12.8904 18.7951 12.643 22.8612 12.7845H22.8613ZM24.1518 27.8818C26.2947 27.0999 27.6875 25.419 27.6875 22.808C27.6875 20.0397 26.2701 18.165 24.1023 17.6355C21.7547 17.0619 18.9208 17.4 18.9208 17.4V28.3037C18.9208 28.3037 22.8436 28.3592 24.1518 27.8818V27.8818Z" fill="black"/>
-                            </svg>                                                                                                                             
-                        </div>
-                        <p>Adobe Photoshop</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="55" height="62" viewBox="0 0 55 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M51.9299 13.2453L30.5965 0.845285C28.6316 -0.282098 26.3859 -0.282098 24.4211 0.845285L3.08772 13.2453C1.12292 14.3724 0 16.3453 0 18.5998V43.3998C0 45.6543 1.12292 47.6272 3.08772 48.7543L24.4211 61.1543C26.3859 62.2817 28.6316 62.2817 30.5965 61.1543L51.9298 48.7543C53.8947 47.6272 55 45.6543 55 43.3998V18.5998C55 16.3453 53.8947 14.3724 51.9299 13.2453V13.2453ZM27.5088 30.9998V51.5724L9.82462 41.1454V20.5724L27.5088 10.427L45.193 20.5724L27.5088 30.9998Z" fill="black"/>
-                            </svg>                                                                                                                             
-                        </div>
-                        <p>Reason</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_229_29)">
-                                    <path d="M48.1633 29.1771C48.1633 25.9441 47.0005 23.7061 46.0054 21.9638L45.7004 21.4682C44.4919 19.5238 43.4358 17.8158 43.4358 15.8257C43.4358 13.4238 45.2582 11.1821 47.8278 11.1821C47.904 11.1821 47.9765 11.1897 48.0489 11.1935L48.1671 11.2049C43.3488 6.77916 37.0425 4.32686 30.5 4.33481C26.1639 4.33259 21.8954 5.40926 18.0791 7.46781C14.2629 9.52636 11.0187 12.5021 8.63911 16.1269C9.24911 16.1459 9.83242 16.1612 10.3242 16.1612C13.0578 16.1612 17.2935 15.8295 17.2935 15.8295C18.7041 15.7456 18.8719 17.8158 17.4612 17.9836C17.4612 17.9836 16.0468 18.1513 14.4684 18.2314L23.9997 46.5735L29.7184 29.3944L25.639 18.2276C24.2322 18.1437 22.8979 17.9798 22.8979 17.9798C21.4872 17.8959 21.655 15.738 23.0618 15.8219C23.0618 15.8219 27.3852 16.1536 29.9548 16.1536C32.6922 16.1536 36.9317 15.8219 36.9317 15.8219C38.3423 15.738 38.5062 17.812 37.0956 17.9798C37.0956 17.9798 35.6774 18.1437 34.1028 18.2276L43.5578 46.3524L46.1656 37.6332L46.3714 36.9736C47.4008 33.6949 48.1595 31.2739 48.1595 29.1733L48.1633 29.1771ZM4.3348 30.5C4.33454 35.4133 5.71751 40.2275 8.32545 44.3916C10.9334 48.5557 14.661 51.9014 19.0815 54.046L6.59561 19.8479C5.10047 23.1998 4.33005 26.8297 4.3348 30.5V30.5Z" fill="black"/>
-                                    <path d="M23.1076 55.5977L30.9613 32.7875L39.0019 54.8237C39.0553 54.9496 39.1163 55.0677 39.1887 55.1821C34.0054 57.0082 28.3783 57.1536 23.1076 55.5977V55.5977ZM53.4551 17.9454C53.5694 18.7804 53.6343 19.6725 53.6343 20.6371C53.6343 23.2906 53.1386 26.2757 51.6441 30.0082L43.6531 53.1119C49.55 49.6859 53.8753 44.0919 55.707 37.5227C57.5388 30.9534 56.7321 23.9285 53.4589 17.9454H53.4551Z" fill="black"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 30.5C0 13.6831 13.6831 0 30.5 0C47.3131 0 61 13.6831 61 30.5C61 47.3169 47.3131 61 30.5 61C13.6831 61 0 47.3169 0 30.5ZM1.39919 30.5C1.39919 46.5468 14.4532 59.6008 30.5 59.6008C46.543 59.6008 59.597 46.5468 59.597 30.5C59.597 14.4494 46.543 1.39919 30.5 1.39919C14.4494 1.39919 1.39919 14.4494 1.39919 30.5Z" fill="black"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_229_29">
-                                        <rect width="61" height="61" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>                                                                                                                             
-                        </div>
-                        <p>Wordpress</p>
-                    </div>
-                    <div class="box-skill">
-                        <div class="box-icon-skill">
-                            <svg width="57" height="57" viewBox="0 0 57 57" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_229_62)">
-                                    <path d="M0.541498 19.8787C0.541498 19.8787 -0.845502 18.8646 0.819373 17.5156L4.7025 14.0054C4.7025 14.0054 5.81162 12.825 6.98725 13.8534L42.8046 41.2656V54.4089C42.8046 54.4089 42.788 56.4751 40.1684 56.2471L0.539123 19.8764L0.541498 19.8787Z" fill="black"/>
-                                    <path d="M9.77548 28.3504L0.541485 36.8339C0.541485 36.8339 -0.408515 37.5464 0.541485 38.8217L4.82836 42.7642C4.82836 42.7642 5.84724 43.8686 7.35061 42.6099L17.138 35.1096L9.77548 28.3504ZM25.9825 28.4192L42.9162 15.352L42.8046 2.27762C42.8046 2.27762 42.0802 -0.577129 39.6696 0.909621L17.138 21.6362L25.9825 28.4192V28.4192Z" fill="black"/>
-                                    <path d="M40.166 56.2638C41.1492 57.2803 42.3415 56.9478 42.3415 56.9478L55.537 50.3761C57.2256 49.2124 56.9881 47.7684 56.9881 47.7684V8.5215C56.9881 6.79725 55.2425 6.20113 55.2425 6.20113L43.8045 0.627001C41.306 -0.933374 39.6696 0.909626 39.6696 0.909626C39.6696 0.909626 41.7739 -0.622249 42.8046 2.27763V54.1714C42.8046 54.5276 42.7286 54.8767 42.579 55.1926C42.2774 55.8077 41.6242 56.3801 40.0567 56.1426L40.166 56.2638V56.2638Z" fill="black"/>
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_229_62">
-                                        <rect width="57" height="57" fill="white"/>
-                                    </clipPath>
-                                </defs>
-                            </svg>                                                                                                                             
-                        </div>
-                        <p>Virtual Studio Code</p>
-                    </div>
-                    
                 </div>
-            </section>
-            <!--Seccion portafolio-->
-            <section id="portfolio" class="section-main">
-                <h2>Portafolio</h2>
-                <div class="grid-portfolio">
-                    <!-- Arituculo portafolio-->
-                    <figure>
-                        <img src="./assets/img/gallery-portfolio/portfolio_firstversion.png" alt="portafolio">
-                        <figcaption>
-                            <h4>Portfolio</h4>
-                            <p>Primera versión de mi Portafolio</p>
-                            <a href="https://github.com/gabotroncosodev/gabotroncosodev.github.io" target="_blank">Ver Repositorio</a>
-                        </figcaption>
-                    </figure> 
-                    <!-- Arituculo portafolio-->
-                    <figure>
-                        <img src="./assets/img/gallery-portfolio/ramm_example.png" alt="rammstein example web for study ">
-                        <figcaption>
-                            <h4>Rammstein Fan Site</h4>
-                            <p>Sitio web creado como ejercicio del Diplomado.</p>
-                            <a href="https://gabotroncosodev.github.io/evaluacion-03-04-desarrollo-web/" target="_blank">Ver Sitio</a>
-                            <a href="https://github.com/gabotroncosodev/evaluacion-03-04-desarrollo-web" target="_blank">Ver Repositorio</a>
-                        </figcaption>
-                    </figure> 
-                    <!-- Arituculo portafolio-->
-                    <figure>
-                        <img src="./assets/img/gallery-portfolio/last_exercise.png" alt="ultimo ejercicio diplomado">
-                        <figcaption>
-                            <h4>Ultimo ejercicio Diplomado</h4>
-                            <p>Montar una landinpage usando Bootstrap y SASS</p>
-                            <a href="https://github.com/gabotroncosodev/ev-2-modulo-4-diplomado">Ver Repositorio</a>
-                        </figcaption>
-                    </figure> 
+                <div class="relative flex justify-center">
+                    <div class="w-full max-w-[340px] md:max-w-[380px] aspect-square bg-gray-100 dark:bg-zinc-900 rounded-[40px] overflow-hidden shadow-2xl shadow-gray-200 dark:shadow-none border border-white/50 dark:border-zinc-800 flex items-center justify-center rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <img src="gabriel.jpg" alt="Gabriel Troncoso" class="w-full h-full object-cover opacity-90 scale-110" referrerPolicy="no-referrer">
+                    </div>
+                    <div class="absolute -bottom-8 -left-8 w-32 h-32 bg-orange-100/50 dark:bg-orange-900/20 rounded-full blur-3xl -z-10"></div>
+                    <div class="absolute -top-8 -right-8 w-32 h-32 bg-blue-100/50 dark:bg-blue-900/20 rounded-full blur-3xl -z-10"></div>
                 </div>
-            </section>
-            <section id="contact" class="section-main">
-                <h2>Contacto</h2>
-                <div class="grid-contact">
-                    <a href="https://www.linkedin.com/in/gabrieltroncosocastro/" class="url-linkedin" target="_blank">
-                        <div class="box-contact">
-                            <div class="logo-info-contact">
-                                <svg width="83" height="83" viewBox="0 0 83 83" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M3.45834 9.81474C3.45834 8.12891 4.12804 6.51213 5.3201 5.32007C6.51216 4.12801 8.12893 3.45832 9.81476 3.45832H73.1783C74.0138 3.45696 74.8413 3.62039 75.6135 3.93926C76.3857 4.25813 77.0874 4.72618 77.6785 5.31661C78.2696 5.90704 78.7384 6.60825 79.0581 7.38011C79.3778 8.15196 79.5421 8.97929 79.5417 9.81474V73.1783C79.5426 74.0139 79.3787 74.8415 79.0595 75.6137C78.7402 76.386 78.2719 77.0877 77.6812 77.6787C77.0905 78.2697 76.389 78.7385 75.617 79.0581C74.8449 79.3778 74.0174 79.5421 73.1818 79.5417H9.81476C8.97973 79.5417 8.15289 79.3771 7.38147 79.0575C6.61005 78.7378 5.90917 78.2693 5.31887 77.6787C4.72858 77.0881 4.26044 76.3869 3.94121 75.6153C3.62197 74.8437 3.45789 74.0168 3.45834 73.1818V9.81474ZM33.5735 32.4668H43.8759V37.6405C45.363 34.6663 49.1671 31.9896 54.8838 31.9896C65.8432 31.9896 68.4404 37.9137 68.4404 48.7832V68.9177H57.3496V51.2594C57.3496 45.069 55.8625 41.5761 52.086 41.5761C46.8466 41.5761 44.6678 45.3422 44.6678 51.2594V68.9177H33.5735V32.4668ZM14.5527 68.4439H25.647V31.9896H14.5527V68.4404V68.4439ZM27.2344 20.0998C27.2553 21.0497 27.0863 21.9943 26.7372 22.878C26.3882 23.7617 25.8661 24.5667 25.2017 25.2459C24.5373 25.9251 23.7439 26.4648 22.8681 26.8332C21.9923 27.2016 21.0517 27.3914 20.1016 27.3914C19.1514 27.3914 18.2109 27.2016 17.3351 26.8332C16.4593 26.4648 15.6659 25.9251 15.0015 25.2459C14.337 24.5667 13.815 23.7617 13.4659 22.878C13.1169 21.9943 12.9478 21.0497 12.9688 20.0998C13.0098 18.2353 13.7793 16.4609 15.1125 15.1568C16.4457 13.8526 18.2366 13.1223 20.1016 13.1223C21.9666 13.1223 23.7574 13.8526 25.0906 15.1568C26.4238 16.4609 27.1933 18.2353 27.2344 20.0998Z" fill="white"/>
-                                </svg>                                                                    
-                            </div>
-                            <div class="txt-info-contact">
-                                <h4>LinkedIn</h4>
-                                <p>linkedin.com/gabrieltroncosocastro</p>
-                            </div>
-                         </div>
-                    </a>
-                    <a href="https://github.com/gabotroncosodev" class="url-linkedin" target="_blank">
-                        <div class="box-contact">
-                            <div class="logo-info-contact">
-                                <svg width="83" height="81" viewBox="0 0 83 81" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M41.5 0C18.5712 0 0 18.5713 0 41.5C0 59.8638 11.8794 75.3744 28.3756 80.8731C30.4506 81.2363 31.2287 79.9913 31.2287 78.9019C31.2287 77.9163 31.1769 74.6481 31.1769 71.1725C20.75 73.0919 18.0525 68.6306 17.2225 66.2963C16.7556 65.1031 14.7325 61.42 12.9687 60.4344C11.5162 59.6563 9.44125 57.7369 12.9169 57.685C16.185 57.6331 18.5194 60.6938 19.2975 61.9388C23.0325 68.2156 28.9981 66.4519 31.3844 65.3625C31.7475 62.665 32.8369 60.8494 34.03 59.8119C24.7962 58.7744 15.1475 55.195 15.1475 39.3213C15.1475 34.8081 16.7556 31.0731 19.4013 28.1681C18.9863 27.1306 17.5337 22.8769 19.8162 17.1706C19.8162 17.1706 23.2919 16.0813 31.2287 21.4244C34.5487 20.4906 38.0762 20.0238 41.6037 20.0238C45.1312 20.0238 48.6587 20.4906 51.9787 21.4244C59.9156 16.0294 63.3912 17.1706 63.3912 17.1706C65.6737 22.8769 64.2213 27.1306 63.8063 28.1681C66.4519 31.0731 68.06 34.7563 68.06 39.3213C68.06 55.2469 58.3594 58.7744 49.1256 59.8119C50.63 61.1088 51.9269 63.5988 51.9269 67.4894C51.9269 73.04 51.875 77.5013 51.875 78.9019C51.875 79.9913 52.6531 81.2881 54.7281 80.8731C62.9665 78.0917 70.1252 72.7968 75.1968 65.7338C80.2684 58.6708 82.9975 50.1952 83 41.5C83 18.5713 64.4287 0 41.5 0Z" fill="white"/>
-                                </svg>                            
-                            </div>
-                            <div class="txt-info-contact">
-                                <h4>Github</h4>
-                                <p>linkedin.com/gabrieltroncosocastro</p>
-                            </div>
-                         </div>
-                    </a>
-                    <a href="https://twitter.com/gabotroncosodev" class="url-linkedin" target="_blank">
-                        <div class="box-contact">
-                            <div class="logo-info-contact">
-                                <svg width="79" height="65" viewBox="0 0 79 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M78.7654 8.07379C75.8777 9.35338 72.7755 10.218 69.5143 10.6088C72.8793 8.59528 75.3968 5.42632 76.597 1.69317C73.4355 3.57101 69.9755 4.8928 66.3672 5.60109C63.9408 3.01033 60.7269 1.29313 57.2245 0.716099C53.7222 0.139069 50.1272 0.734489 46.9979 2.40992C43.8686 4.08535 41.38 6.74705 39.9184 9.98177C38.4569 13.2165 38.1041 16.8433 38.915 20.299C32.5091 19.9774 26.2424 18.3124 20.5216 15.412C14.8008 12.5117 9.75377 8.44094 5.70807 3.46384C4.32474 5.85009 3.52932 8.61675 3.52932 11.5633C3.52778 14.2158 4.18099 16.8277 5.43099 19.1672C6.68099 21.5067 8.48913 23.5016 10.695 24.9747C8.13678 24.8933 5.63501 24.202 3.39791 22.9585V23.166C3.39765 26.8862 4.68452 30.492 7.04016 33.3715C9.39581 36.251 12.6751 38.2268 16.3217 38.9636C13.9485 39.6059 11.4604 39.7005 9.04537 39.2403C10.0742 42.4414 12.0783 45.2406 14.7771 47.2461C17.4759 49.2516 20.7342 50.3629 24.096 50.4245C18.3892 54.9045 11.3413 57.3346 4.08611 57.3239C2.80093 57.3243 1.51684 57.2492 0.240448 57.0991C7.60489 61.8342 16.1776 64.3472 24.9329 64.3374C54.5709 64.3374 70.7732 39.7902 70.7732 18.5007C70.7732 17.809 70.7559 17.1104 70.7247 16.4188C73.8763 14.1396 76.5967 11.3173 78.7585 8.08417L78.7654 8.07379Z" fill="white"/>
-                                </svg>
-                                    
-                                                                    
-                            </div>
-                            <div class="txt-info-contact">
-                                <h4>Twitter</h4>
-                                <p>@gabotroncosodev</p>
-                            </div>
-                         </div>
-                    </a>
-                     
+            </div>
+        </section>
+
+        <!-- 3. HABILIDADES Y CONOCIMIENTOS (Gris) -->
+        <section id="habilidades" class="bg-gray-50 dark:bg-[#121212] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Habilidades & Conocimientos</h2>
+                    <div class="h-1 w-12 bg-primary rounded-full"></div>
                 </div>
-            </section>
-        </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <!-- Herramientas -->
+                    <div>
+                        <h3 class="font-bold text-gray-400 dark:text-zinc-500 uppercase text-xs tracking-widest mb-4">Herramientas</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Figma</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">FigJam</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Notion</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Miro</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Maze</span>
+                        </div>
+                    </div>
+
+                    <!-- Métodos -->
+                    <div>
+                        <h3 class="font-bold text-gray-400 dark:text-zinc-500 uppercase text-xs tracking-widest mb-4">Métodos y Procesos</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Design Thinking</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Double Diamond</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Scrum</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Lean UX</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Historias de usuario</span>
+                        </div>
+                    </div>
+
+                    <!-- UI -->
+                    <div>
+                        <h3 class="font-bold text-gray-400 dark:text-zinc-500 uppercase text-xs tracking-widest mb-4">UI Design</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Atomic Design</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Tokens</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Material Design</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">TailwindCSS</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Vuetify</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">HTML</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">CSS</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">JavaScript</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Sass</span>
+                        </div>
+                    </div>
+
+                    <!-- UX -->
+                    <div class="lg:col-span-2">
+                        <h3 class="font-bold text-gray-400 dark:text-zinc-500 uppercase text-xs tracking-widest mb-4">UX Research & Strategy</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Leyes UX</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Accesibilidad</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Tests de Usabilidad</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Arquitectura de la Información</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Customer Journey Map</span>
+                            <span class="bg-white dark:bg-zinc-900 text-gray-700 dark:text-gray-300 text-base px-4 py-1.5 rounded-full border border-gray-200 dark:border-zinc-800 transition-colors">Site Mapping</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. ESTUDIO DE CASOS (Blanco) -->
+        <section id="casos" class="bg-white dark:bg-[#0b0b0b] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Estudio de Casos</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Proyectos destacados donde apliqué metodologías de diseño para resolver problemas complejos.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Proyecto 1 -->
+                    <a href="https://gratis-cephalopod-e65.notion.site/Caso-de-estudio-Design-System-para-Pepper-2099897657bb808fb1e0cc1b630e3952" target="_blank" class="block group bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="h-56 bg-gray-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-zinc-700 transition-colors overflow-hidden">
+                            <img src="pepper-case.png" alt="Pepper Design System" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-2xl font-bold dark:text-white">Sistema de Diseño para Pepper</h3>
+                                <span class="text-xs font-bold bg-orange-50 dark:bg-orange-900/20 text-secondary px-2 py-1 rounded">Lead UX/UI</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Lideré la creación de un MVP de Design System para estandarizar la experiencia visual, reducir la deuda de diseño y acelerar el desarrollo con componentes reutilizables.
+                            </p>
+                            <div class="inline-flex items-center text-primary font-bold group-hover:underline gap-1">
+                                Ver caso completo en Notion <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Proyecto 2 -->
+                    <a href="https://gratis-cephalopod-e65.notion.site/Caso-de-estudio-Magic-Ocean-21b9897657bb80b5bb9de6f9f905b8ca?pvs=74" target="_blank" class="block group bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300">
+                        <div class="h-56 bg-gray-100 dark:bg-zinc-800 flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-zinc-700 transition-colors overflow-hidden">
+                            <img src="magic-ocean.png" alt="Teatro Magic Ocean" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" referrerPolicy="no-referrer">
+                        </div>
+                        <div class="p-8 space-y-4">
+                            <div class="flex justify-between items-start">
+                                <h3 class="text-2xl font-bold dark:text-white">Teatro Magic Ocean</h3>
+                                <span class="text-xs font-bold bg-orange-50 dark:bg-orange-900/20 text-secondary px-2 py-1 rounded">UX/UI Designer</span>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Diseño con enfoque MVP de un flujo de compra de entradas online. Entregables: Research express, wireframes, MVP visual desktop & mobile en solo 2 días.
+                            </p>
+                            <div class="inline-flex items-center text-primary font-bold group-hover:underline gap-1">
+                                Ver caso completo en Notion <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. PROYECTOS PERSONALES (Gris) -->
+        <section id="proyectos" class="bg-gray-50 dark:bg-[#121212] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Proyectos Personales & Experimentales</h2>
+                    <div class="h-1 w-12 bg-primary rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Personal 1 -->
+                    <div class="block p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl space-y-4 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-md transition-all group">
+                        <div class="w-10 h-10 bg-gray-50 dark:bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-orange-50 dark:group-hover:bg-orange-900/20 transition-colors">
+                            <span class="material-symbols-outlined text-gray-400 dark:text-zinc-500 text-sm group-hover:text-secondary">casino</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold group-hover:text-secondary transition-colors mb-2 dark:text-white">Rediseño Hoja de Personaje D&D</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Optimización de la arquitectura de información para mejorar la legibilidad durante sesiones de juego en vivo.
+                            </p>
+                        </div>
+                        <a href="#" target="_blank" class="pt-2 flex items-center text-xs font-bold text-primary hover:underline gap-1">
+                            Ver en Notion <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                        </a>
+                    </div>
+
+                    <!-- Personal 2 -->
+                    <div class="block p-6 bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 rounded-xl space-y-4 hover:border-orange-300 dark:hover:border-orange-500 hover:shadow-md transition-all group">
+                        <div class="w-10 h-10 bg-gray-50 dark:bg-zinc-800 rounded-lg flex items-center justify-center group-hover:bg-orange-50 dark:group-hover:bg-orange-900/20 transition-colors">
+                            <span class="material-symbols-outlined text-gray-400 dark:text-zinc-500 text-sm group-hover:text-secondary">swords</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold group-hover:text-secondary transition-colors mb-2 dark:text-white">APP Gestión de turnos</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Herramienta experimental para agilizar el combate en juegos de rol de mesa mediante una interfaz minimalista.
+                            </p>
+                        </div>
+                        <a href="#" target="_blank" class="pt-2 flex items-center text-xs font-bold text-primary hover:underline gap-1">
+                            Ver en Notion <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. EXPERIENCIA PROFESIONAL (Blanco) -->
+        <section id="experiencia" class="bg-white dark:bg-[#0b0b0b] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Experiencia Profesional</h2>
+                    <div class="h-1 w-12 bg-primary rounded-full"></div>
+                </div>
+
+                <div class="max-w-4xl ml-6 space-y-16">
+                    <!-- Item 1: SOCIUS -->
+                    <div class="relative timeline-item pl-8">
+                        <div class="timeline-dot"></div>
+                        <span class="text-xs font-bold text-secondary uppercase tracking-widest">Octubre 2023 – Febrero 2025</span>
+                        <h3 class="text-xl font-bold mt-1 dark:text-white">Diseñador UX UI</h3>
+                        <p class="text-sm text-gray-500 dark:text-zinc-500 mb-4">SOCIUS Arquitectura y Plataformas Tecnológicas</p>
+                        
+                        <div class="text-gray-600 dark:text-gray-400 leading-relaxed space-y-4">
+                            <p>
+                                Mi principal asignación fue Pepper, un robusto sistema que ayuda a las empresas a gestionar flujo de caja y conciliación bancaria.
+                            </p>
+                            <p>
+                                Lideré el equipo de diseño y la experiencia de usuario: realicé evaluaciones heurísticas y pruebas de usabilidad, trabajé codo a codo con el stakeholder principal y con el equipo de desarrollo en un entorno ágil. Estandarizamos la interfaz mediante un Design System (Usamos TailwindCSS como punto de encuentro) y definimos procesos y herramientas de colaboración. A parte, participe en un proceso de Prueba de Concepto y brindé mentorías a diseñadores de otros proyectos.
+                            </p>
+                        </div>
+                        
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Trabajo Remoto</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">SAAS</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Sistema de diseño</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Atomic Design</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Figma</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">TailwindCSS</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Semantic UI</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">PrimeReact</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Maze</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Wireframes</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Heurísticas</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Test de usabilidad</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">LeanUX</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Leyes UX</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Doble Diamante</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Inventario de contenido</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Site mapping</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">POC</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Scrum</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Mentorías</span>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Alseco -->
+                    <div class="relative timeline-item pl-8">
+                        <div class="timeline-dot"></div>
+                        <span class="text-xs font-bold text-secondary uppercase tracking-widest">Noviembre 2022 - Octubre 2023</span>
+                        <h3 class="text-xl font-bold mt-1 dark:text-white">Diseñador UX UI</h3>
+                        <p class="text-sm text-gray-500 dark:text-zinc-500 mb-4">Alseco</p>
+                        
+                        <div class="text-gray-600 dark:text-gray-400 leading-relaxed space-y-4">
+                            <p>
+                                Formé parte del equipo de producto y diseñé nuevas funcionalidades, varias de ellas esenciales para la propuesta de valor.
+                            </p>
+                            <p>
+                                En nuestro entorno ágil de startup combiné investigación rápida con wireframes y user flows, entregando prototipos listos para el equipo de desarrollo. Colaboré en el mantenimiento del Design System basado en Vuetify / Material Design 2, presenté avances a stakeholders y propuse mejoras que optimizaron la arquitectura de información.
+                            </p>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mt-6">
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Trabajo remoto</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">SAAS</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">eCommerce</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Sistema de diseño</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">User flows</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Wireframes</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">UX Research</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Figma</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Notion</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Vuetify</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Material Design 2</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Historias de usuario</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Doble diamante</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Arquitectura de información</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Gestión con stakeholders</span>
+                            <span class="bg-gray-100 dark:bg-zinc-900 text-gray-600 dark:text-gray-400 text-sm font-mono px-3 py-1 rounded border border-gray-200 dark:border-zinc-800 transition-colors">Scrum</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. SOBRE MÍ (Gris) -->
+        <section id="sobre-mi" class="bg-gray-50 dark:bg-[#121212] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-3 gap-12">
+                <div class="md:col-span-1">
+                    <h2 class="text-3xl font-bold mb-4 dark:text-white">Sobre mí</h2>
+                    <div class="h-1.5 w-12 bg-secondary rounded-full mb-8"></div>
+                    <div class="bg-white dark:bg-zinc-900 p-6 rounded-2xl border border-gray-100 dark:border-zinc-800 transition-colors">
+                        <p class="text-sm font-semibold text-gray-400 dark:text-zinc-500 uppercase tracking-widest mb-4">Estado</p>
+                        <p class="text-gray-600 dark:text-gray-400 font-medium flex items-center gap-2">
+                            <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                            Buscando nuevas oportunidades
+                        </p>
+                    </div>
+                </div>
+                <div class="md:col-span-2 space-y-6">
+                    <div class="text-xl text-gray-800 dark:text-gray-200 leading-relaxed">
+                        <p>
+                            ¡Hola! Soy <span class="font-bold text-primary">Diseñador UX/UI</span>, actualmente me encuentro buscando trabajo y proyectándome hacia el rol de <span class="italic text-secondary">Product Designer</span>.
+                        </p>
+                    </div>
+                    <div class="text-lg text-gray-600 dark:text-gray-400 space-y-6 leading-relaxed">
+                        <p>
+                            Mi último trabajo consistía en una aplicación de gestión financiera para que las empresas puedan tener un mejor manejo de sus finanzas, buscando crear experiencias digitales que realmente aporten valor a los usuarios.
+                        </p>
+                        <p>
+                            Me gusta lo que hago y siempre estoy aprendiendo. Esta última etapa ha sido un desafío por los cambios constantes, pero me ha confirmado que el diseño es lo que realmente me apasiona. He tenido la oportunidad de aplicar metodologías como <span class="text-secondary font-semibold">Atomic Design</span> y explorar la creación de sistemas de diseño, lo que me ha permitido crecer en este campo y prepararme para mi siguiente paso como <span class="font-bold text-gray-800 dark:text-white">Product Designer</span>.
+                        </p>
+                        <p>
+                            Valoro tanto el diseño visual como el centrado en el usuario y disfruto trabajando en equipos donde se puedan compartir ideas, aprender juntos y resolver problemas de manera creativa.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. CONTACTO (Blanco) -->
+        <section id="contacto" class="bg-white dark:bg-[#0b0b0b] border-t border-gray-100 dark:border-zinc-800 transition-colors duration-300">
+            <div class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6 dark:text-white">¿Trabajamos juntos?</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        Estoy siempre abierto a escuchar nuevas propuestas, colaborar en proyectos innovadores o simplemente charlar sobre diseño y tecnología. ¡No dudes en escribirme!
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 text-gray-600 dark:text-gray-400">
+                            <span class="material-symbols-outlined text-secondary">location_on</span>
+                            <span>Temuco Chile</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white dark:bg-zinc-900 border border-gray-200 dark:border-zinc-800 p-8 rounded-2xl shadow-sm relative overflow-hidden transition-colors">
+                    <form id="contact-form" action="https://formspree.io/f/xqeywokg" method="POST" class="space-y-5 transition-opacity duration-300">
+                        <div>
+                            <label for="name" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Nombre</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-2 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-2 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-1">Mensaje</label>
+                            <textarea id="message" name="message" rows="4" required class="w-full px-4 py-2 bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all dark:text-white"></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="w-full py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-500 transition-colors shadow-md flex items-center justify-center gap-2">
+                            <span>Enviar Mensaje</span>
+                        </button>
+                    </form>
+
+                    <!-- Success Message -->
+                    <div id="success-message" class="hidden absolute inset-0 bg-white dark:bg-zinc-900 flex flex-col items-center justify-center text-center p-8 space-y-4">
+                        <div class="w-16 h-16 bg-green-100 dark:bg-green-900/20 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center">
+                            <span class="material-symbols-outlined text-4xl">check_circle</span>
+                        </div>
+                        <h3 class="text-2xl font-bold dark:text-white">¡Mensaje enviado!</h3>
+                        <p class="text-gray-600 dark:text-gray-400">Gracias por contactarme. Te responderé lo antes posible.</p>
+                        <button onclick="resetForm()" class="text-primary font-bold hover:underline">Enviar otro mensaje</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
-    <script src="./assets/js/main.js"></script>
+
+    <!-- 9. FOOTER (Gris) -->
+    <footer class="bg-gray-50 dark:bg-[#0b0b0b] border-t border-gray-200 dark:border-zinc-800 py-12 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-gray-500 dark:text-gray-400 text-sm">
+                &copy; <span id="year"></span> Gabriel Troncoso. Diseñado con enfoque en la claridad.
+            </div>
+            <div class="flex gap-6">
+                <a href="https://linkedin.com" target="_blank" class="text-gray-400 hover:text-primary transition-colors">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark Mode Logic
+        const html = document.documentElement;
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const darkModeToggleMobile = document.getElementById('dark-mode-toggle-mobile');
+        const darkModeIcon = document.getElementById('dark-mode-icon');
+        const darkModeIconMobile = document.getElementById('dark-mode-icon-mobile');
+
+        const updateDarkModeUI = (isDark) => {
+            if (isDark) {
+                html.classList.add('dark');
+                darkModeIcon.textContent = 'light_mode';
+                darkModeIconMobile.textContent = 'light_mode';
+            } else {
+                html.classList.remove('dark');
+                darkModeIcon.textContent = 'dark_mode';
+                darkModeIconMobile.textContent = 'dark_mode';
+            }
+        };
+
+        // Check for saved preference
+        const savedDarkMode = localStorage.getItem('darkMode');
+        
+        // Default to dark mode if no preference is saved
+        let isDarkMode = savedDarkMode !== null ? savedDarkMode === 'true' : true;
+        updateDarkModeUI(isDarkMode);
+
+        const toggleDarkMode = () => {
+            isDarkMode = !isDarkMode;
+            localStorage.setItem('darkMode', isDarkMode);
+            updateDarkModeUI(isDarkMode);
+        };
+
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+        darkModeToggleMobile.addEventListener('click', toggleDarkMode);
+
+        // Actualizar año en el footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Menú móvil
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        const hideMenu = () => {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        };
+
+        closeMenu.addEventListener('click', hideMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', hideMenu));
+
+        // Manejo de formulario con AJAX (Formspree)
+        const contactForm = document.getElementById('contact-form');
+        const successMessage = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitBtnText = submitBtn.querySelector('span');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Estado de carga
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-70', 'cursor-not-allowed');
+            submitBtnText.textContent = 'Enviando...';
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    contactForm.classList.add('opacity-0');
+                    setTimeout(() => {
+                        contactForm.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                    }, 300);
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        alert(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        alert("Ups! Hubo un problema al enviar el formulario.");
+                    }
+                    resetSubmitBtn();
+                }
+            } catch (error) {
+                alert("Ups! Hubo un problema de conexión.");
+                resetSubmitBtn();
+            }
+        });
+
+        function resetSubmitBtn() {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-70', 'cursor-not-allowed');
+            submitBtnText.textContent = 'Enviar Mensaje';
+        }
+
+        function resetForm() {
+            contactForm.reset();
+            contactForm.classList.remove('hidden', 'opacity-0');
+            successMessage.classList.add('hidden');
+            resetSubmitBtn();
+        }
+    </script>
 </body>
 </html>

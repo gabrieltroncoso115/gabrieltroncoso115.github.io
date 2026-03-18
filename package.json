@@ -1,22 +1,25 @@
 {
-  "name": "gabotroncosodev.github.io",
-  "version": "1.0.0",
-  "description": "<!--\r **gabrieltroncoso15/gabrieltroncoso15** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.",
-  "main": "index.js",
+  "name": "react-example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite --port=3000 --host=0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rm -rf dist",
+    "lint": "tsc --noEmit"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gabotroncosodev/gabotroncosodev.github.io.git"
+  "dependencies": {
+    "@google/genai": "^1.29.0",
+    "express": "^4.21.2",
+    "dotenv": "^17.2.3"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gabotroncosodev/gabotroncosodev.github.io/issues"
-  },
-  "homepage": "https://github.com/gabotroncosodev/gabotroncosodev.github.io#readme",
   "devDependencies": {
-    "sass": "^1.55.0"
+    "@types/node": "^22.14.0",
+    "tsx": "^4.21.0",
+    "typescript": "~5.8.2",
+    "vite": "^6.2.0",
+    "@types/express": "^4.17.21"
   }
 }
