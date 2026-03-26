@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "EB Garamond", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --color-emerald-glow: #00ffcc;
+  --color-emerald-dim: #008a6d;
+  --color-bg-dark: #050808;
+
+  /* Material Design 3 Typography Scale with Line Heights */
+  --text-display-large: 3.5625rem;
+  --text-display-large--line-height: 4rem;
+  --text-display-large--letter-spacing: -0.015625rem;
+
+  --text-display-medium: 2.8125rem;
+  --text-display-medium--line-height: 3.25rem;
+
+  --text-display-small: 2.25rem;
+  --text-display-small--line-height: 2.75rem;
+
+  --text-headline-large: 2rem;
+  --text-headline-large--line-height: 2.5rem;
+
+  --text-headline-medium: 1.75rem;
+  --text-headline-medium--line-height: 2.25rem;
+
+  --text-headline-small: 1.5rem;
+  --text-headline-small--line-height: 2rem;
+
+  --text-title-large: 1.375rem;
+  --text-title-large--line-height: 1.75rem;
+
+  --text-title-medium: 1rem;
+  --text-title-medium--line-height: 1.5rem;
+  --text-title-medium--letter-spacing: 0.009375rem;
+
+  --text-title-small: 0.875rem;
+  --text-title-small--line-height: 1.25rem;
+  --text-title-small--letter-spacing: 0.00625rem;
+
+  --text-label-large: 0.875rem;
+  --text-label-large--line-height: 1.25rem;
+  --text-label-large--letter-spacing: 0.00625rem;
+
+  --text-label-medium: 0.75rem;
+  --text-label-medium--line-height: 1rem;
+  --text-label-medium--letter-spacing: 0.03125rem;
+
+  --text-label-small: 0.6875rem;
+  --text-label-small--line-height: 1rem;
+  --text-label-small--letter-spacing: 0.03125rem;
+
+  --text-body-large: 1rem;
+  --text-body-large--line-height: 1.5rem;
+  --text-body-large--letter-spacing: 0.03125rem;
+
+  --text-body-medium: 1rem; /* Base 16px */
+  --text-body-medium--line-height: 1.625rem;
+  --text-body-medium--letter-spacing: 0.015625rem;
+
+  --text-body-small: 0.875rem; /* 14px */
+  --text-body-small--line-height: 1.375rem;
+  --text-body-small--letter-spacing: 0.025rem;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-dark: #050808;
+  --panel-bg: rgba(10, 15, 15, 0.85);
+  --emerald-glow: #00ffcc;
+  --emerald-dim: #008a6d;
+  --text-primary: #e0f2f1;
+  --text-secondary: #80cbc4;
+  --border-glow: rgba(0, 255, 204, 0.3);
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  margin: 0;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% -20%, rgba(0, 255, 204, 0.05) 0%, transparent 50%),
+    linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+  font-size: 16px;
+  line-height: 1.625;
+}
+
+.investigative-panel {
+  background: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(0, 255, 204, 0.05);
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.investigative-panel:hover {
+  border-color: var(--emerald-glow);
+  box-shadow: 0 0 25px rgba(0, 255, 204, 0.15);
+}
+
+.glow-text {
+  text-shadow: 0 0 10px var(--emerald-glow);
+}
+
+.emerald-accent {
+  color: var(--emerald-glow);
+}
+
+.circular-frame {
+  border-radius: 50%;
+  border: 2px solid var(--emerald-glow);
+  box-shadow: 0 0 15px var(--emerald-glow);
+  overflow: hidden;
+  position: relative;
+}
+
+.circular-frame::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.scanline {
+  width: 100%;
+  height: 2px;
+  background: rgba(0, 255, 204, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  animation: scan 8s linear infinite;
+  z-index: 10;
+}
+
+@keyframes scan {
+  0% { top: 0; }
+  100% { top: 100%; }
+}
+
+.terminal-header {
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border-bottom: 1px solid var(--border-glow);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.bracket-border {
+  position: relative;
+}
+
+.bracket-border::before, .bracket-border::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--emerald-glow);
+  border-style: solid;
+}
+
+.bracket-border::before {
+  top: -2px;
+  left: -2px;
+  border-width: 2px 0 0 2px;
+}
+
+.bracket-border::after {
+  bottom: -2px;
+  right: -2px;
+  border-width: 0 2px 2px 0;
+}
+
+button.investigative-btn {
+  background: transparent;
+  border: 1px solid var(--emerald-dim);
+  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button.investigative-btn:hover {
+  background: rgba(0, 255, 204, 0.1);
+  border-color: var(--emerald-glow);
+  color: var(--emerald-glow);
+  box-shadow: 0 0 10px var(--border-glow);
+}
