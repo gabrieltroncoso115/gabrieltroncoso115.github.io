@@ -1,0 +1,831 @@
+/*
+ * TEMA: Primigenio
+ * AUTOR: Creador de Temas
+ * DESCRIPCIÓN: Un tema elegante para Obsidian.
+ */
+
+/* ==========================================
+   1. VARIABLES GLOBALES / CONFIGURACIÓN BASE
+   ========================================== */
+:root {
+  /* Fondos de Interfaz */
+  --background-primary: #16191D;
+  --background-primary-alt: #161616;
+  --background-secondary: #1B1E22;
+  --background-secondary-alt: #1B1E22;
+  --background-modifier-border: #303030;
+
+  /* Opacidad de sidebar translúcido */
+  --opacity-glass: 0.85;
+
+  /* Textos y Acentos */
+  --text-normal: #E8E8E8;
+  --text-muted: #a4a6a8;
+  --text-bold: #A3D7C2;
+  --text-italic: #C0E3D5;
+  --text-highlight-bg: rgba(2, 255, 168, 0.3);
+  --color-accent: #029b6c;
+  --color-accent-hover: #029b6c;
+  --color-accent-rgb: 2, 155, 108;
+  --interactive-accent: #029b6c;
+  --interactive-accent-hover: #029b6c;
+  --interactive-accent-rgb: 2, 155, 108;
+  --text-accent: #029b6c;
+  --text-on-accent: #ffffff;
+
+  /* Encabezados */
+  --h1-color: #02fca8;
+  --h2-color: #CB70FF;
+  --h3-color: #CB70FF;
+  --h4-color: #D0B0E3;
+  --h5-color: #D0B0E3;
+  --h6-color: #D0B0E3;
+
+  /* Enlaces */
+  --link-color: #FA9E00;
+  --link-color-hover: #FFCB70;
+  --link-decoration: none;
+  --link-border-bottom: none;
+
+  /* Workspace UI */
+  --tab-background-active: #0F1010;
+  --tab-text-active: #ffffff;
+  --tab-background-inactive: #1a1a1a;
+  --tab-text-inactive: #a4a6a8;
+  --nav-item-background-active: rgba(255, 255, 255, 0.05);
+  --nav-item-text-active: #2CAF84;
+  --nav-item-background-hover: #27795f;
+  --nav-item-text-hover: #ffffff;
+  --nav-item-tag-color: #FAD000A3;
+  --status-bar-background: #1a1a1a;
+  --status-bar-text: #a4a6a8;
+  --scrollbar-thumb-bg: #303030;
+
+  /* Barra de Título */
+  --titlebar-background: #15181c;
+  --titlebar-text-color-focused: #a4a6a8;
+
+  /* Interactividad */
+  --button-primary-background: #029b6c;
+  --button-primary-background-hover: #02D495;
+  --button-primary-background-active: #029b6c;
+  --button-primary-text: #ffffff;
+  --button-primary-text-hover: #ffffff;
+  --button-primary-text-active: #ffffff;
+  --button-background: #303030;
+  --button-background-hover: #3e3e3e;
+  --button-background-active: #242424;
+  --button-text: #dcddde;
+  --button-text-hover: #ffffff;
+  --button-text-active: #ffffff;
+  --button-border-color: #303030;
+  --button-font-family: inherit;
+  --button-font-size: 0.85em;
+  --checkbox-checked-color: #029b6c;
+  --text-selection: #039B6D40;
+  --search-result-background: rgba(245, 158, 11, 0.35);
+
+  /* Bloques de Citas y Separadores */
+  --blockquote-border-color: #1FF4A6;
+  --blockquote-border-width: 3px;
+  --blockquote-bg: #039B6D14;
+  --blockquote-background-color: var(--blockquote-bg);
+  --hr-color: #303030;
+  --hr-thickness: 2px;
+
+  /* Bloques de Nota */
+  --callout-border-color: #029b6c;
+  --callout-bg-color: rgba(127, 109, 246, 0.08);
+  --callout-note: 56, 120, 240;
+  --callout-info: 56, 120, 240;
+  --callout-todo: 56, 120, 240;
+  --callout-success: 74, 189, 137;
+  --callout-tip: 74, 189, 137;
+  --callout-hint: 74, 189, 137;
+  --callout-important: 74, 189, 137;
+  --callout-warning: 217, 119, 6;
+  --callout-caution: 217, 119, 6;
+  --callout-attention: 217, 119, 6;
+  --callout-danger: 231, 76, 60;
+  --callout-error: 231, 76, 60;
+  --callout-bug: 231, 76, 60;
+  --callout-fail: 231, 76, 60;
+  --callout-failure: 231, 76, 60;
+  --callout-missing: 231, 76, 60;
+  --callout-example: 74, 189, 137;
+  --callout-quote: 107, 114, 128;
+  --callout-abstract: 107, 114, 128;
+  --callout-summary: 107, 114, 128;
+  --callout-tldr: 107, 114, 128;
+  --table-border-color: #7C57B2;
+  --table-header-bg: #5C329F66;
+  --table-row-alt-bg: #5C329F21;
+  --metadata-background: rgba(0, 0, 0, 0.15);
+  --metadata-property-background: rgba(0, 0, 0, 0.15);
+  --metadata-label-text-color: #a3a3a3;
+  --metadata-value-text-color: #e5e5e5;
+  --metadata-key-bg: rgba(255, 255, 255, 0.03);
+  --metadata-value-bg: rgba(255, 255, 255, 0.05);
+  --code-background: #282828;
+  --code-normal: #e0e0e0;
+  --tag-color: #2CAF84;
+  --tag-background: #2CAF8408;
+  --tag-border: #2CAF8426;
+  --tag-border-color: #2CAF8426;
+  --table-row-hover-bg: #754AB5A6;
+  --table-width: 100%;
+  --ribbon-background-hover: #C8933729;
+  --ribbon-background-active: #039B6D1A;
+  --ribbon-item-color-hover: #F4A61F;
+  --ribbon-item-color-active: #03fda9;
+
+  /* Listas y Guías */
+  --list-marker-color: #F5C000;
+  --list-indentation-guide-color: #303030;
+  --nav-indentation-guide-color: #222526;
+
+  /* Fondos Avanzados */
+  --global-background-image: none;
+
+  /* Vistas */
+  --graph-node: #109c77;
+  --graph-node-focused: #1FF4A6;
+  --graph-line: #303030;
+  --graph-text: #a4a6a8;
+  --graph-controls-bg: rgba(32, 32, 32, 0.85);
+  --canvas-background: #161616;
+  --canvas-card-bg: #1e1e1e;
+  --canvas-arrow-color: #029b6c;
+  --canvas-arrow-width: 2px;
+  --popover-background: #030303;
+  --popover-border-color: #1FF4A64D;
+  --popover-width: 660px;
+  --popover-height: 370px;
+  --db-toolbar-btn-color: #a4a6a8;
+  --db-toolbar-btn-hover-bg: rgba(255, 255, 255, 0.05);
+  --db-row-hover-bg: rgba(255, 255, 255, 0.05);
+  --db-card-bg: #161616;
+  --db-card-border: #303030;
+  --db-card-border-hover: #1900BD;
+
+  /* CodeMirror 6 Syntax Highlighting */
+  --code-keyword: #f472b6;
+  --code-string: #34d399;
+  --code-comment: #78716c;
+
+  /* Menus y Tooltips */
+  --menu-background: #242424;
+  --menu-item-hover: rgba(255, 255, 255, 0.05);
+  --tooltip-background: #000000;
+  --tooltip-text-color: #ffffff;
+
+  /* Modales */
+  --modal-background: #202020;
+  --modal-border: #303030;
+  --modal-backdrop-blur: 4px;
+  --background-modifier-cover: rgba(0, 0, 0, 0.6);
+
+  /* Settings Panel */
+  --settings-tab-background: #1a1a1a;
+  --settings-dropdown-bg: #282828;
+
+  /* Variables Base */
+  --font-text: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-interface: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-monospace: Fira Code, monospace;
+  --border-width: 1px;
+  --radius-s: 3px;
+  --radius-m: 7px;
+  --radius-l: 6px;
+  --scrollbar-width: 8px;
+  --h1-size: 2em;
+  --h1-line-height: 1.2;
+  --h1-margin-bottom: 0.5em;
+  --h1-weight: 600;
+  --h1-font: Outfit, sans-serif;
+  --h2-size: 1.75em;
+  --h2-line-height: 1.2;
+  --h2-margin-bottom: 0.5em;
+  --h2-weight: 600;
+  --h2-font: Outfit, sans-serif;
+  --h3-size: 1.5em;
+  --h3-line-height: 1.2;
+  --h3-margin-bottom: 0.5em;
+  --h3-weight: 600;
+  --h3-font: Outfit, sans-serif;
+  --h4-size: 1.3em;
+  --h4-line-height: 1.2;
+  --h4-margin-bottom: 0.5em;
+  --h4-weight: 600;
+  --h4-font: Fira Code, monospace;
+  --h5-size: 1.2em;
+  --h5-line-height: 1.2;
+  --h5-margin-bottom: 0.5em;
+  --h5-weight: 600;
+  --h5-font: Fira Code, monospace;
+  --h6-size: 1.05em;
+  --h6-line-height: 1.2;
+  --h6-margin-bottom: 0.5em;
+  --h6-weight: 600;
+  --h6-font: Fira Code, monospace;
+  --checkbox-radius: 4px;
+  --callout-radius: 3px;
+  --callout-border-width: 3px;
+  --callout-padding: 12px 20px;
+  --callout-margin: 1.2rem 0;
+  --callout-title-size: inherit;
+  --callout-title-weight: 600;
+  --callout-title-font: Outfit, sans-serif;
+  --callout-title-spacing: 6px;
+  --callout-body-size: inherit;
+  --table-border-width: 1px;
+  --global-background-blur: 0px;
+  --list-spacing: 0.55em;
+  --list-line-height: 1.5;
+  --p-spacing: 0.8em;
+  --heading-spacing: 0.7em;
+  --line-height-normal: 1.5;
+  --file-line-width: 700px;
+}
+
+/* ==========================================
+   2. CONFIGURACIÓN DEL MODO OSCURO (.theme-dark)
+   ========================================== */
+.theme-dark {
+  /* Fondos de Interfaz */
+  --background-primary: #16191D;
+  --background-primary-alt: #161616;
+  --background-secondary: #1B1E22;
+  --background-secondary-alt: #1B1E22;
+  --background-modifier-border: #303030;
+
+  /* Opacidad de sidebar translúcido */
+  --opacity-glass: 0.85;
+
+  /* Textos y Acentos */
+  --text-normal: #E8E8E8;
+  --text-muted: #a4a6a8;
+  --text-bold: #A3D7C2;
+  --text-italic: #C0E3D5;
+  --text-highlight-bg: rgba(2, 255, 168, 0.3);
+  --color-accent: #029b6c;
+  --color-accent-hover: #029b6c;
+  --color-accent-rgb: 2, 155, 108;
+  --interactive-accent: #029b6c;
+  --interactive-accent-hover: #029b6c;
+  --interactive-accent-rgb: 2, 155, 108;
+  --text-accent: #029b6c;
+  --text-on-accent: #ffffff;
+
+  /* Encabezados */
+  --h1-color: #02fca8;
+  --h2-color: #CB70FF;
+  --h3-color: #CB70FF;
+  --h4-color: #D0B0E3;
+  --h5-color: #D0B0E3;
+  --h6-color: #D0B0E3;
+
+  /* Enlaces */
+  --link-color: #FA9E00;
+  --link-color-hover: #FFCB70;
+  --link-decoration: none;
+  --link-border-bottom: none;
+
+  /* Workspace UI */
+  --tab-background-active: #0F1010;
+  --tab-text-active: #ffffff;
+  --tab-background-inactive: #1a1a1a;
+  --tab-text-inactive: #a4a6a8;
+  --nav-item-background-active: rgba(255, 255, 255, 0.05);
+  --nav-item-text-active: #2CAF84;
+  --nav-item-background-hover: #27795f;
+  --nav-item-text-hover: #ffffff;
+  --nav-item-tag-color: #FAD000A3;
+  --status-bar-background: #1a1a1a;
+  --status-bar-text: #a4a6a8;
+  --scrollbar-thumb-bg: #303030;
+
+  /* Barra de Título */
+  --titlebar-background: #15181c;
+  --titlebar-text-color-focused: #a4a6a8;
+
+  /* Interactividad */
+  --button-primary-background: #029b6c;
+  --button-primary-background-hover: #02D495;
+  --button-primary-background-active: #029b6c;
+  --button-primary-text: #ffffff;
+  --button-primary-text-hover: #ffffff;
+  --button-primary-text-active: #ffffff;
+  --button-background: #303030;
+  --button-background-hover: #3e3e3e;
+  --button-background-active: #242424;
+  --button-text: #dcddde;
+  --button-text-hover: #ffffff;
+  --button-text-active: #ffffff;
+  --button-border-color: #303030;
+  --button-font-family: inherit;
+  --button-font-size: 0.85em;
+  --checkbox-checked-color: #029b6c;
+  --text-selection: #039B6D40;
+  --search-result-background: rgba(245, 158, 11, 0.35);
+
+  /* Bloques de Citas y Separadores */
+  --blockquote-border-color: #1FF4A6;
+  --blockquote-border-width: 3px;
+  --blockquote-bg: #039B6D14;
+  --blockquote-background-color: var(--blockquote-bg);
+  --hr-color: #303030;
+  --hr-thickness: 2px;
+
+  /* Bloques de Nota */
+  --callout-border-color: #029b6c;
+  --callout-bg-color: rgba(127, 109, 246, 0.08);
+  --callout-note: 56, 120, 240;
+  --callout-info: 56, 120, 240;
+  --callout-todo: 56, 120, 240;
+  --callout-success: 74, 189, 137;
+  --callout-tip: 74, 189, 137;
+  --callout-hint: 74, 189, 137;
+  --callout-important: 74, 189, 137;
+  --callout-warning: 217, 119, 6;
+  --callout-caution: 217, 119, 6;
+  --callout-attention: 217, 119, 6;
+  --callout-danger: 231, 76, 60;
+  --callout-error: 231, 76, 60;
+  --callout-bug: 231, 76, 60;
+  --callout-fail: 231, 76, 60;
+  --callout-failure: 231, 76, 60;
+  --callout-missing: 231, 76, 60;
+  --callout-example: 74, 189, 137;
+  --callout-quote: 107, 114, 128;
+  --callout-abstract: 107, 114, 128;
+  --callout-summary: 107, 114, 128;
+  --callout-tldr: 107, 114, 128;
+  --table-border-color: #7C57B2;
+  --table-header-bg: #5C329F66;
+  --table-row-alt-bg: #5C329F21;
+  --metadata-background: rgba(0, 0, 0, 0.15);
+  --metadata-property-background: rgba(0, 0, 0, 0.15);
+  --metadata-label-text-color: #a3a3a3;
+  --metadata-value-text-color: #e5e5e5;
+  --metadata-key-bg: rgba(255, 255, 255, 0.03);
+  --metadata-value-bg: rgba(255, 255, 255, 0.05);
+  --code-background: #282828;
+  --code-normal: #e0e0e0;
+  --tag-color: #2CAF84;
+  --tag-background: #2CAF8408;
+  --tag-border: #2CAF8426;
+  --tag-border-color: #2CAF8426;
+  --table-row-hover-bg: #754AB5A6;
+  --table-width: 100%;
+  --ribbon-background-hover: #C8933729;
+  --ribbon-background-active: #039B6D1A;
+  --ribbon-item-color-hover: #F4A61F;
+  --ribbon-item-color-active: #03fda9;
+
+  /* Listas y Guías */
+  --list-marker-color: #F5C000;
+  --list-indentation-guide-color: #303030;
+  --nav-indentation-guide-color: #222526;
+
+  /* Fondos Avanzados */
+  --global-background-image: none;
+
+  /* Vistas */
+  --graph-node: #109c77;
+  --graph-node-focused: #1FF4A6;
+  --graph-line: #303030;
+  --graph-text: #a4a6a8;
+  --graph-controls-bg: rgba(32, 32, 32, 0.85);
+  --canvas-background: #161616;
+  --canvas-card-bg: #1e1e1e;
+  --canvas-arrow-color: #029b6c;
+  --canvas-arrow-width: 2px;
+  --popover-background: #030303;
+  --popover-border-color: #1FF4A64D;
+  --popover-width: 660px;
+  --popover-height: 370px;
+  --db-toolbar-btn-color: #a4a6a8;
+  --db-toolbar-btn-hover-bg: rgba(255, 255, 255, 0.05);
+  --db-row-hover-bg: rgba(255, 255, 255, 0.05);
+  --db-card-bg: #161616;
+  --db-card-border: #303030;
+  --db-card-border-hover: #1900BD;
+
+  /* CodeMirror 6 Syntax Highlighting */
+  --code-keyword: #f472b6;
+  --code-string: #34d399;
+  --code-comment: #78716c;
+
+  /* Menus y Tooltips */
+  --menu-background: #242424;
+  --menu-item-hover: rgba(255, 255, 255, 0.05);
+  --tooltip-background: #000000;
+  --tooltip-text-color: #ffffff;
+
+  /* Modales */
+  --modal-background: #202020;
+  --modal-border: #303030;
+  --modal-backdrop-blur: 4px;
+  --background-modifier-cover: rgba(0, 0, 0, 0.6);
+
+  /* Settings Panel */
+  --settings-tab-background: #1a1a1a;
+  --settings-dropdown-bg: #282828;
+
+  /* Variables Base */
+  --font-text: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-interface: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-monospace: Fira Code, monospace;
+  --border-width: 1px;
+  --radius-s: 3px;
+  --radius-m: 7px;
+  --radius-l: 6px;
+  --scrollbar-width: 8px;
+  --h1-size: 2em;
+  --h1-line-height: 1.2;
+  --h1-margin-bottom: 0.5em;
+  --h1-weight: 600;
+  --h1-font: Outfit, sans-serif;
+  --h2-size: 1.75em;
+  --h2-line-height: 1.2;
+  --h2-margin-bottom: 0.5em;
+  --h2-weight: 600;
+  --h2-font: Outfit, sans-serif;
+  --h3-size: 1.5em;
+  --h3-line-height: 1.2;
+  --h3-margin-bottom: 0.5em;
+  --h3-weight: 600;
+  --h3-font: Outfit, sans-serif;
+  --h4-size: 1.3em;
+  --h4-line-height: 1.2;
+  --h4-margin-bottom: 0.5em;
+  --h4-weight: 600;
+  --h4-font: Fira Code, monospace;
+  --h5-size: 1.2em;
+  --h5-line-height: 1.2;
+  --h5-margin-bottom: 0.5em;
+  --h5-weight: 600;
+  --h5-font: Fira Code, monospace;
+  --h6-size: 1.05em;
+  --h6-line-height: 1.2;
+  --h6-margin-bottom: 0.5em;
+  --h6-weight: 600;
+  --h6-font: Fira Code, monospace;
+  --checkbox-radius: 4px;
+  --callout-radius: 3px;
+  --callout-border-width: 3px;
+  --callout-padding: 12px 20px;
+  --callout-margin: 1.2rem 0;
+  --callout-title-size: inherit;
+  --callout-title-weight: 600;
+  --callout-title-font: Outfit, sans-serif;
+  --callout-title-spacing: 6px;
+  --callout-body-size: inherit;
+  --table-border-width: 1px;
+  --global-background-blur: 0px;
+  --list-spacing: 0.55em;
+  --list-line-height: 1.5;
+  --p-spacing: 0.8em;
+  --heading-spacing: 0.7em;
+  --line-height-normal: 1.5;
+  --file-line-width: 700px;
+}
+
+
+/* ==========================================
+   3. CONFIGURACIÓN DEL MODO CLARO (.theme-light)
+   ========================================== */
+.theme-light {
+  /* Fondos de Interfaz */
+  --background-primary: #ffffff;
+  --background-primary-alt: #fafafa;
+  --background-secondary: #f2f2f2;
+  --background-secondary-alt: #e8e8e8;
+  --background-modifier-border: #e0e0e0;
+
+  /* Opacidad de sidebar translúcido */
+  --opacity-glass: 0.9;
+
+  /* Textos y Acentos */
+  --text-normal: #2e2e2e;
+  --text-muted: #646464;
+  --text-bold: #111111;
+  --text-italic: #2e2e2e;
+  --text-highlight-bg: rgba(245, 158, 11, 0.2);
+  --color-accent: #7f6df6;
+  --color-accent-hover: #6b59e2;
+  --color-accent-rgb: 127, 109, 246;
+  --interactive-accent: #7f6df6;
+  --interactive-accent-hover: #6b59e2;
+  --interactive-accent-rgb: 127, 109, 246;
+  --text-accent: #7f6df6;
+  --text-on-accent: #ffffff;
+
+  /* Encabezados */
+  --h1-color: #111111;
+  --h2-color: #222222;
+  --h3-color: #222222;
+  --h4-color: #646464;
+  --h5-color: #646464;
+  --h6-color: #646464;
+
+  /* Enlaces */
+  --link-color: #7f6df6;
+  --link-color-hover: #6b59e2;
+  --link-decoration: none;
+  --link-border-bottom: none;
+
+  /* Workspace UI */
+  --tab-background-active: #ffffff;
+  --tab-text-active: #111111;
+  --tab-background-inactive: #e8e8e8;
+  --tab-text-inactive: #646464;
+  --nav-item-background-active: rgba(0, 0, 0, 0.05);
+  --nav-item-text-active: #7f6df6;
+  --nav-item-background-hover: rgba(0, 0, 0, 0.03);
+  --nav-item-text-hover: #111111;
+  --nav-item-tag-color: #7f6df6;
+  --status-bar-background: #e8e8e8;
+  --status-bar-text: #646464;
+  --scrollbar-thumb-bg: #e0e0e0;
+
+  /* Barra de Título */
+  --titlebar-background: #e8e8e8;
+  --titlebar-text-color-focused: #646464;
+
+  /* Interactividad */
+  --button-primary-background: #7f6df6;
+  --button-primary-background-hover: #6b59e2;
+  --button-primary-background-active: #5847c9;
+  --button-primary-text: #ffffff;
+  --button-primary-text-hover: #ffffff;
+  --button-primary-text-active: #ffffff;
+  --button-background: #f0f0f0;
+  --button-background-hover: #e0e0e0;
+  --button-background-active: #d0d0d0;
+  --button-text: #111111;
+  --button-text-hover: #000000;
+  --button-text-active: #000000;
+  --button-border-color: #cccccc;
+  --button-font-family: inherit;
+  --button-font-size: 0.85em;
+  --checkbox-checked-color: #7f6df6;
+  --text-selection: rgba(107, 70, 193, 0.2);
+  --search-result-background: rgba(245, 158, 11, 0.25);
+
+  /* Bloques de Citas y Separadores */
+  --blockquote-border-color: #7f6df6;
+  --blockquote-border-width: 3px;
+  --blockquote-bg: rgba(127, 109, 246, 0.02);
+  --blockquote-background-color: var(--blockquote-bg);
+  --hr-color: #e0e0e0;
+  --hr-thickness: 3px;
+
+  /* Bloques de Nota */
+  --callout-border-color: #7f6df6;
+  --callout-bg-color: rgba(127, 109, 246, 0.05);
+  --callout-note: 0, 141, 165;
+  --callout-info: 0, 141, 165;
+  --callout-todo: 0, 141, 165;
+  --callout-success: 74, 189, 137;
+  --callout-tip: 74, 189, 137;
+  --callout-hint: 74, 189, 137;
+  --callout-important: 74, 189, 137;
+  --callout-warning: 217, 119, 6;
+  --callout-caution: 217, 119, 6;
+  --callout-attention: 217, 119, 6;
+  --callout-danger: 231, 76, 60;
+  --callout-error: 231, 76, 60;
+  --callout-bug: 231, 76, 60;
+  --callout-fail: 231, 76, 60;
+  --callout-failure: 231, 76, 60;
+  --callout-missing: 231, 76, 60;
+  --callout-example: 124, 58, 237;
+  --callout-quote: 107, 114, 128;
+  --callout-abstract: 107, 114, 128;
+  --callout-summary: 107, 114, 128;
+  --callout-tldr: 107, 114, 128;
+  --table-border-color: #e0e0e0;
+  --table-header-bg: #f5f5f5;
+  --table-row-alt-bg: rgba(250, 250, 250, 0.5);
+  --metadata-background: rgba(0, 0, 0, 0.05);
+  --metadata-property-background: rgba(0, 0, 0, 0.05);
+  --metadata-label-text-color: #666666;
+  --metadata-value-text-color: #222222;
+  --metadata-key-bg: rgba(0, 0, 0, 0.02);
+  --metadata-value-bg: rgba(0, 0, 0, 0.04);
+  --code-background: #f5f5f5;
+  --code-normal: #2e2e2e;
+  --tag-color: #7f6df6;
+  --tag-background: rgba(127, 109, 246, 0.05);
+  --tag-border: rgba(127, 109, 246, 0.15);
+  --tag-border-color: rgba(127, 109, 246, 0.15);
+  --table-row-hover-bg: #7C57B2;
+  --table-width: 100%;
+  --ribbon-background-hover: rgba(0, 0, 0, 0.05);
+  --ribbon-background-active: rgba(127, 109, 246, 0.15);
+  --ribbon-item-color-hover: #111111;
+  --ribbon-item-color-active: #7f6df6;
+
+  /* Listas y Guías */
+  --list-marker-color: #7f6df6;
+  --list-indentation-guide-color: #e0e0e0;
+  --nav-indentation-guide-color: #e0e0e0;
+
+  /* Fondos Avanzados */
+  --global-background-image: none;
+
+  /* Vistas */
+  --graph-node: #7f6df6;
+  --graph-node-focused: #6b59e2;
+  --graph-line: #e0e0e0;
+  --graph-text: #646464;
+  --graph-controls-bg: rgba(255, 255, 255, 0.85);
+  --canvas-background: #fafafa;
+  --canvas-card-bg: #ffffff;
+  --canvas-arrow-color: #7f6df6;
+  --canvas-arrow-width: 2px;
+  --popover-background: #ffffff;
+  --popover-border-color: #e0e0e0;
+  --popover-width: 660px;
+  --popover-height: 370px;
+  --db-toolbar-btn-color: #646464;
+  --db-toolbar-btn-hover-bg: rgba(0, 0, 0, 0.05);
+  --db-row-hover-bg: rgba(0, 0, 0, 0.05);
+  --db-card-bg: #fafafa;
+  --db-card-border: #e0e0e0;
+  --db-card-border-hover: #7f6df6;
+
+  /* CodeMirror 6 Syntax Highlighting */
+  --code-keyword: #db2777;
+  --code-string: #059669;
+  --code-comment: #78716c;
+
+  /* Menus y Tooltips */
+  --menu-background: #ffffff;
+  --menu-item-hover: rgba(0, 0, 0, 0.05);
+  --tooltip-background: #111111;
+  --tooltip-text-color: #ffffff;
+
+  /* Modales */
+  --modal-background: #ffffff;
+  --modal-border: #e0e0e0;
+  --modal-backdrop-blur: 4px;
+  --background-modifier-cover: rgba(0, 0, 0, 0.2);
+
+  /* Settings Panel */
+  --settings-tab-background: #e8e8e8;
+  --settings-dropdown-bg: #f5f5f5;
+
+  /* Variables Base */
+  --font-text: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-interface: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-monospace: Fira Code, monospace;
+  --border-width: 1px;
+  --radius-s: 3px;
+  --radius-m: 7px;
+  --radius-l: 6px;
+  --scrollbar-width: 8px;
+  --h1-size: 2em;
+  --h1-line-height: 1.2;
+  --h1-margin-bottom: 0.5em;
+  --h1-weight: 600;
+  --h1-font: Outfit, sans-serif;
+  --h2-size: 1.75em;
+  --h2-line-height: 1.2;
+  --h2-margin-bottom: 0.5em;
+  --h2-weight: 600;
+  --h2-font: Outfit, sans-serif;
+  --h3-size: 1.5em;
+  --h3-line-height: 1.2;
+  --h3-margin-bottom: 0.5em;
+  --h3-weight: 600;
+  --h3-font: Outfit, sans-serif;
+  --h4-size: 1.3em;
+  --h4-line-height: 1.2;
+  --h4-margin-bottom: 0.5em;
+  --h4-weight: 600;
+  --h4-font: Fira Code, monospace;
+  --h5-size: 1.2em;
+  --h5-line-height: 1.2;
+  --h5-margin-bottom: 0.5em;
+  --h5-weight: 600;
+  --h5-font: Fira Code, monospace;
+  --h6-size: 1.05em;
+  --h6-line-height: 1.2;
+  --h6-margin-bottom: 0.5em;
+  --h6-weight: 600;
+  --h6-font: Fira Code, monospace;
+  --checkbox-radius: 4px;
+  --callout-radius: 3px;
+  --callout-border-width: 3px;
+  --callout-padding: 12px 16px;
+  --callout-margin: 1.2rem 0;
+  --callout-title-size: inherit;
+  --callout-title-weight: 600;
+  --callout-title-font: inherit;
+  --callout-title-spacing: 6px;
+  --callout-body-size: inherit;
+  --table-border-width: 1px;
+  --global-background-blur: 0px;
+  --list-spacing: 0.075em;
+  --list-line-height: 1.5;
+  --p-spacing: 0.8em;
+  --heading-spacing: 0.7em;
+  --line-height-normal: 1.5;
+  --file-line-width: 700px;
+}
+
+/* Tipografía y espaciado nativos de Obsidian. */
+.markdown-rendered,
+.markdown-preview-view,
+.markdown-source-view.mod-cm6 .cm-content {
+  line-height: var(--line-height-normal, 1.5);
+}
+
+/* Separación posterior individual; Obsidian gestiona altura y espacio superior. */
+.markdown-rendered h1,
+.markdown-preview-view h1 {
+  margin-block-end: var(--h1-margin-bottom, 0.5em);
+}
+
+.markdown-rendered h2,
+.markdown-preview-view h2 {
+  margin-block-end: var(--h2-margin-bottom, 0.5em);
+}
+
+.markdown-rendered h3,
+.markdown-preview-view h3 {
+  margin-block-end: var(--h3-margin-bottom, 0.5em);
+}
+
+.markdown-rendered h4,
+.markdown-preview-view h4 {
+  margin-block-end: var(--h4-margin-bottom, 0.5em);
+}
+
+.markdown-rendered h5,
+.markdown-preview-view h5 {
+  margin-block-end: var(--h5-margin-bottom, 0.5em);
+}
+
+.markdown-rendered h6,
+.markdown-preview-view h6 {
+  margin-block-end: var(--h6-margin-bottom, 0.5em);
+}
+
+/* Altura y separación vertical de listas y viñetas. */
+.markdown-rendered ul,
+.markdown-rendered ol,
+.markdown-preview-view ul,
+.markdown-preview-view ol {
+  line-height: var(--list-line-height, var(--line-height-normal, 1.5));
+}
+
+.markdown-rendered li,
+.markdown-preview-view li {
+  line-height: var(--list-line-height, var(--line-height-normal, 1.5));
+}
+
+/* Live Preview: usar padding vertical, nunca margen sobre líneas CodeMirror. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-1 {
+  padding-bottom: var(--h1-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-2 {
+  padding-bottom: var(--h2-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-3 {
+  padding-bottom: var(--h3-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-4 {
+  padding-bottom: var(--h4-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-5 {
+  padding-bottom: var(--h5-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-header-6 {
+  padding-bottom: var(--h6-margin-bottom, 0.5em);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-list-line {
+  line-height: var(--list-line-height, var(--line-height-normal, 1.5));
+}
+
+/* Hover de filas en tablas Markdown, tanto en lectura como en Live Preview. */
+.markdown-rendered table tbody tr > td,
+.markdown-source-view.mod-cm6 .cm-table-widget table tbody tr > td,
+.markdown-source-view.mod-cm6 table.cm-table-widget tbody tr > td {
+  transition: background-color 0.12s ease;
+}
+
+.markdown-rendered table tbody tr:hover > td,
+.markdown-source-view.mod-cm6 .cm-table-widget table tbody tr:hover > td,
+.markdown-source-view.mod-cm6 table.cm-table-widget tbody tr:hover > td {
+  background-color: var(--table-row-hover-bg, transparent);
+}
