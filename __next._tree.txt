@@ -6,4 +6,4 @@
 :HL["https://gabrieltroncoso115.github.io/magic-ocean.webp","image"]
 :HL["/projects/obsidian-theme-builder.png","image"]
 :HL["/projects/landschaften.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"J9pDUJ8BKZOPB3CrobbyZ"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"AYtihwjyi2430hhp83YsM"}
