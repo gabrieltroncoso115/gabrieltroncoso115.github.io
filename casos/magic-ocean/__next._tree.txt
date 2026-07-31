@@ -9,4 +9,4 @@
 :HL["/cases/magic-ocean/magic-06.png","image"]
 :HL["/cases/magic-ocean/magic-09.png","image"]
 :HL["/cases/magic-ocean/magic-07.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"casos","param":null,"prefetchHints":0,"slots":{"children":{"name":"magic-ocean","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"AYtihwjyi2430hhp83YsM"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"casos","param":null,"prefetchHints":0,"slots":{"children":{"name":"magic-ocean","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"YP3Ps-nNE6lEpIyYJhN1m"}
